@@ -13,6 +13,8 @@ class Game extends React.Component {
       grid: null,
       rowClues: null,
       colClues: null,
+      filaSat:null,
+      colSat:null,
       waiting: false
     };
     this.changeSimbolo = this.changeSimbolo.bind(this);
@@ -29,6 +31,8 @@ class Game extends React.Component {
           grid: response['Grilla'],
           rowClues: response['PistasFilas'],
           colClues: response['PistasColumns'],
+          filaSat: [].constructor(response['PistasFilas'].length),
+          colSat: [].constructor(response['PistasColumns'].length)
         });
       }
     });
@@ -57,25 +61,22 @@ class Game extends React.Component {
     const pistasColumnas = JSON.stringify(this.state.colClues);
     const queryS = 'put("'+this.state.simbolo+'", [' + i + ',' + j + ']' 
     + ', ' + pistasFila + ',' + pistasColumnas + ',' + squaresS + ', GrillaRes, FilaSat, ColSat)'; /* faltan las pistas filas y las pistas columnas estan vacias.. */ 
-    /*if(FilaSat===1){
-      this.setState({
-        estadodelclue: 1,
-      });
-    });
-    }*/
-    /*if(ColSat===1){
-      this.setState({
-        estadodelclue: 1,
-      });
-    });
-    }*/
+   
     this.setState({
       waiting: true
     });
     this.pengine.query(queryS, (success, response) => {
       if (success) {
+        const filAux=this.state.filaSat;
+        const colAux=this.state.colSat;
+        filAux[i]=response['FilaSat'];
+        colAux[j]=response['ColSat'];
+        console.log("Fila sat: "+filAux[i]);
+        console.log("col sat: "+colAux[j]);
         this.setState({
           grid: response['GrillaRes'],
+          filaSat: filAux,
+          colSat: colAux,
           waiting: false,
         });
       } else {

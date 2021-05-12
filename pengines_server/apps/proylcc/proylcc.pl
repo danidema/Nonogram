@@ -41,8 +41,7 @@ put(Contenido, [RowN, ColN], PistasFilas, PistasColumnas, Grilla, NewGrilla, X, 
 	
 	
 	replace(Row, RowN, NewRow, Grilla, NewGrilla),
-	verificarFila(NewRow,PistasFilas,NewGrilla,X),
-	verificarColumna(ColN,PistasColumnas,NewGrilla,Y),
+	
 	% NewRow es el resultado de reemplazar la celda Cell en la posición ColN de Row por _,
 	% siempre y cuando Cell coincida con Contenido (Cell se instancia en la llamada al replace/5).
 	% En caso contrario (;)
@@ -51,7 +50,9 @@ put(Contenido, [RowN, ColN], PistasFilas, PistasColumnas, Grilla, NewGrilla, X, 
 	(replace(Cell, ColN, _, Row, NewRow),
 	Cell == Contenido 
 		;
-	replace(_Cell, ColN, Contenido, Row, NewRow)).
+	replace(_Cell, ColN, Contenido, Row, NewRow)),
+    verificarFila(RowN,PistasFilas,NewGrilla,X),
+	verificarColumna(ColN,PistasColumnas,NewGrilla,Y).
 
 verificarFila(IndiceFila,PistasFilas,GrillaRes, 1) :- nth0(IndiceFila,PistasFilas,FiladePistas),
     nth0(IndiceFila,GrillaRes,Filadegrilla),

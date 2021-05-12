@@ -28,7 +28,7 @@ class Board extends React.Component {
                 >
                     <div>{/* top-left corner square */}</div>
                     {colClues.map((clue, i) =>
-                        <Clue clue={clue} key={i}/>
+                        <Clue clue={clue} satisface={this.props.colSat[i]} key={i}/>
                     )}
                 </div>
                 <div className="horizontal">
@@ -41,7 +41,7 @@ class Board extends React.Component {
                         }}
                     >
                         {rowClues.map((clue, i) =>
-                            <Clue clue={clue} key={i}/>
+                            <Clue clue={clue} satisface={this.props.filaSat[i]} key={i}/>
                         )}
                     </div>
                     <div className="board"
