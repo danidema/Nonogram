@@ -99,6 +99,8 @@ class Game extends React.Component {
           rowClues={this.state.rowClues}
           colClues={this.state.colClues}
           onClick={(i, j) => this.handleClick(i,j)}
+          filaSat={this.state.filaSat}
+          colSat={this.state.colSat}
         />
         <input type="checkbox" id="switch" onClick={this.changeSimbolo}/><label for="switch"></label>
         <div className="gameInfo">
