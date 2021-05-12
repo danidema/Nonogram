@@ -9,11 +9,13 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      /*estado: 'Sigue Jugando!',
+      finalizado: false,*/
       simbolo:"X",
       grid: null,
       rowClues: null,
       colClues: null,
-      filaSat:null,
+      filaSat: null,
       colSat:null,
       waiting: false
     };
@@ -91,7 +93,15 @@ class Game extends React.Component {
     if (this.state.grid === null) {
       return null;
     }
+    /*
+    const es =this.state.rowClues.map((clue, i) =>{
+      const finalizado=this.state.colSat.reduce((total, number) => total+number); 
+      return finalizado;
+    })
+    console.log(es);
+    */
     const statusText = 'Sigue Jugando!';
+    
     return (
       <div className="game">
         <Board
@@ -102,7 +112,7 @@ class Game extends React.Component {
           filaSat={this.state.filaSat}
           colSat={this.state.colSat}
         />
-        <input type="checkbox" id="switch" onClick={this.changeSimbolo}/><label for="switch"></label>
+        <input type="checkbox" id="switch" onClick={this.changeSimbolo}/><label htmlFor="switch"></label>
         <div className="gameInfo">
           {statusText}
         </div>
