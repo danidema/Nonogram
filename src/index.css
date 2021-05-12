@@ -1,0 +1,124 @@
+body {
+  background: rgb(243, 130, 243);
+  font: 14px "Century Gothic", Futura, sans-serif;
+  width: 100%;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+}
+.paintedSquare{
+  font-size: 0px;
+  background: rgb(94, 3, 86);
+}
+/*.squeare pintado que es cuando tengo un # lo cambio por un background pintado*/
+
+.square:focus {
+  outline: none;
+}
+
+.board {
+  display: grid;
+}
+
+.horizontal {
+  display: flex;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.rowClues {
+  display: grid;
+}
+
+.colClues {
+  display: grid;
+}
+
+.clue {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #bdb9e0;
+  border-radius: 8px;
+  margin: 5px;
+}
+
+.clueSatisfecho{
+  background: rgb(8, 167, 29);
+  color: #fff;
+}
+/*.clue satisfecho pongo la misma propiedades pero cambio lo que quiero que se modifique cuando esta satisfecha la pista.*/
+
+
+.clue div {
+  margin: 2px
+}
+
+.colClues .clue {
+  flex-direction: column;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gameInfo {
+  margin-left: 40px;
+  color: #fff;
+}
+
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+label {
+  left: 20px;
+  justify-content: center;
+	cursor: pointer;
+	width: 100px;
+	height: 50px;
+	background: rgb(12, 12, 12);
+	display: block;
+	border-radius: 50px;
+	position: relative;
+}
+
+label:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 40px;
+	height: 40px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+input:checked + label {
+	background: rgb(94, 3, 86);
+}
+
+input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+label:active:after {
+	width: 130px;
+}
